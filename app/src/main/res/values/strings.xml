@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ceep</string>
+    <string name="formulario_hint">Título</string>
+    <string name="descricao_hint">Descricao</string>
 </resources>
