@@ -46,6 +46,8 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
         return notas.size();
     }
 
+
+
     class NotaViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView titulo;
@@ -65,5 +67,11 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
             titulo.setText(nota.getTitulo());
             descricao.setText(nota.getDescricao());
         }
+    }
+
+    public void adciona(Nota nota) {
+        notas.add(nota);
+        notifyDataSetChanged();
+
     }
 }
