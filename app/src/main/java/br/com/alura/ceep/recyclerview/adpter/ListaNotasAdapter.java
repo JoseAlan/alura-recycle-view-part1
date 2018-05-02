@@ -49,6 +49,11 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
         return notas.size();
     }
 
+    public void altera(int posicao, Nota nota) {
+        notas.set(posicao, nota);
+        notifyDataSetChanged();
+    }
+
 
     class NotaViewHolder extends RecyclerView.ViewHolder {
 
@@ -63,7 +68,7 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        onItemClickListener.onItemClick(nota);
+                        onItemClickListener.onItemClick(nota, getAdapterPosition());
                     // Toast.makeText(context, "isso ai", Toast.LENGTH_LONG).show();
                 }
             });
