@@ -7,18 +7,16 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import java.io.Serializable;
 
 import br.com.alura.ceep.R;
 import br.com.alura.ceep.model.Nota;
 
 import static br.com.alura.ceep.ui.activity.NotaActivityConstantes.CHAVE_NOTA;
 import static br.com.alura.ceep.ui.activity.NotaActivityConstantes.CHAVE_POSICAO;
+import static br.com.alura.ceep.ui.activity.NotaActivityConstantes.TITULO_FORMULARIO_NOTA_ACTIVITY;
 import static br.com.alura.ceep.ui.activity.NotaActivityConstantes.POSICAO_INVALIDA;
+import static br.com.alura.ceep.ui.activity.NotaActivityConstantes.TITULO_FORMULARIO_NOTA_ACTIVITY_INSERE;
 
 public class FormularioNotaActivity extends AppCompatActivity {
 
@@ -32,10 +30,12 @@ public class FormularioNotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_nota);
 
+        setTitle(TITULO_FORMULARIO_NOTA_ACTIVITY_INSERE);
         inicializaCampos();
 
         Intent dadosRecebidos = getIntent();
-        if(dadosRecebidos.hasExtra(CHAVE_NOTA)){
+        if (dadosRecebidos.hasExtra(CHAVE_NOTA)) {
+            setTitle(TITULO_FORMULARIO_NOTA_ACTIVITY);
             Nota notaRecebida = (Nota) dadosRecebidos
                     .getSerializableExtra(CHAVE_NOTA);
             posicaoRecibida = dadosRecebidos.getIntExtra(CHAVE_POSICAO, POSICAO_INVALIDA);
@@ -61,7 +61,7 @@ public class FormularioNotaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(ehMenuSalvaNota(item)){
+        if (ehMenuSalvaNota(item)) {
             Nota notaCriada = criaNota();
             retornaNota(notaCriada);
             finish();
@@ -73,7 +73,7 @@ public class FormularioNotaActivity extends AppCompatActivity {
         Intent resultadoInsercao = new Intent();
         resultadoInsercao.putExtra(CHAVE_NOTA, nota);
         resultadoInsercao.putExtra(CHAVE_POSICAO, posicaoRecibida);
-        setResult(Activity.RESULT_OK,resultadoInsercao);
+        setResult(Activity.RESULT_OK, resultadoInsercao);
     }
 
     @NonNull
